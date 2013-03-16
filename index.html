@@ -1,0 +1,44 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MovieDB</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script>
+function loadXMLDoc()
+{
+var xmlhttp;
+var direct="CBsphinx2.php?q='"+document.getElementsByName("key")[0].value+"'";
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+    }
+  }
+    xmlhttp.open("GET",direct,true);
+xmlhttp.send();
+}
+
+</script>
+</head>
+<body>
+
+<input type="text" name="key" onkeyup="loadXMLDoc()">
+
+<h1>Search Results:</h1><hr>
+<br>
+<div id="myDiv"><h2></h2></div>
+</body>
+</html>
